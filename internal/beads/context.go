@@ -163,7 +163,7 @@ func isExternalBeadsDir(beadsDir string) (bool, error) {
 
 	beadsCommonDir, err := getGitCommonDirForPath(beadsDir)
 	if err != nil {
-		return false, err
+		return true, nil
 	}
 
 	return cwdCommonDir != beadsCommonDir, nil

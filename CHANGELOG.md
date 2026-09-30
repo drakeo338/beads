@@ -22,6 +22,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `proxied-server` workspace is exempt from the new rule entirely — it reaches
   its server through the proxy, so an ambient port does not describe its
   lifecycle.
+- **A `.beads` directory outside any git repository is now treated as external
+  when the caller stands inside an unrelated git repository.** With
+  `BEADS_DIR` pointing at a non-git workspace, the repo context resolved
+  `RepoRoot` to the caller's own repository instead of the workspace, because
+  the failed git lookup for the `.beads` directory was swallowed and read as
+  "not external" ([#7002](https://github.com/gastownhall/beads/issues/7002)).
 
 - **`bd doctor` no longer flags a `.local_version` that starts with `v`.** The
   canonical spelling of a Go module version — and the string a build stamped
